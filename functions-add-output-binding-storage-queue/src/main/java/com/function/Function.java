@@ -17,8 +17,9 @@ public class Function {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) 
             HttpRequestMessage<Optional<String>> request, 
-            @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-            OutputBinding<String> msg, final ExecutionContext context) {
+            @QueueOutput(name = "msg", queueName = "outqueue", 
+            connection = "AzureWebJobsStorage") OutputBinding<String> msg, 
+            final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         // Parse query parameter
@@ -31,7 +32,7 @@ public class Function {
         } else {
             // Write the name to the message queue. 
             msg.setValue(name);
-            
+
             return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
         }
     }
