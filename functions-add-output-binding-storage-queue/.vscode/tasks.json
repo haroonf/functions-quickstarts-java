@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "func",
+      "command": "host start",
+      "problemMatcher": "$func-watch",
+      "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/target/azure-functions/myfunction-20200318113304077"
+      },
+      "dependsOn": "package"
+    },
+    {
+      "label": "package",
+      "command": "mvn clean package",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "func",
+      "command": "extensions install",
+      "problemMatcher": []
+    }
+  ]
+}
