@@ -47,8 +47,6 @@ public class FunctionTest {
         // Invoke
         @SuppressWarnings("unchecked")
         final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.class);
-        
-        // Invoke
         final HttpResponseMessage ret = new Function().run(req, msg, context);
 
         // Verify
